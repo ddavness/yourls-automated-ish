@@ -75,6 +75,12 @@ done
 sed -i "s/___USERNAME___/${USER}/g" config.php
 sed -i "s/___USERPASSWORD___/${PASSWORD_1}/g" config.php
 
+echo -n "What's the URL we're serving? https://"
+read DOMAIN
+echo ""
+
+sed -i "s/___BASEURL___/${DOMAIN}/g" config.php
+
 echo -n "Where do you want to unpack YOURLS? Specify a directory: "
 read INSTALL_DIR
 echo ""

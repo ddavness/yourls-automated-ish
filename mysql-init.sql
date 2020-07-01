@@ -1,5 +1,6 @@
-CREATE USER IF NOT EXISTS 'yourls'@'localhost' IDENTIFIED BY "___DATABASE_PASSWORD___";
+DROP USER IF EXISTS "yourls"@"localhost";
+CREATE USER IF NOT EXISTS "yourls"@"localhost" IDENTIFIED BY "___DATABASE_PASSWORD___";
 CREATE DATABASE IF NOT EXISTS yourls;
-GRANT ALL PRIVILEGES ON yourls.* TO 'yourls'@'localhost';
+GRANT ALL PRIVILEGES ON yourls.* TO "yourls"@"localhost";
 FLUSH PRIVILEGES;
 QUIT
