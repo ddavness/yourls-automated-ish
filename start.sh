@@ -57,15 +57,19 @@ echo -n "Please input your username: "
 read USER
 echo -n "Please input your password: "
 read -s PASSWORD_1
+echo ""
 echo -n "(again): "
 read -s PASSWORD_2
+echo ""
 
-while [[ "${PASSWORD_1}" -ne "${PASSWORD_2}" ]]; do
+while [[ "${PASSWORD_1}" != "${PASSWORD_2}" ]]; do
     echo "Password mismatch! Please try again."
     echo -n "Please input your password: "
     read -s PASSWORD_1
+    echo ""
     echo -n "(again): "
     read -s PASSWORD_2
+    echo ""
 done
 
 sed -i "s/___USERNAME___/${USER}/g" config.php
@@ -73,10 +77,12 @@ sed -i "s/___USERPASSWORD___/${PASSWORD_1}/g" config.php
 
 echo -n "Where do you want to unpack YOURLS? Specify a directory: "
 read INSTALL_DIR
+echo ""
 
 while [ ! -d ${INSTALL_DIR} ]; do
     echo -n "This is not a directory! Please specify a directory: "
     read INSTALL_DIR
+    echo ""
 done
 
 "Unpacking into ${INSTALL_DIR}..."
@@ -96,9 +102,12 @@ mv sample-robots.txt robots.txt
 
 chmod 666 user/config.php
 
-echo "YOU'LL STILL NEED TO CONFIGURE YOUR WEBSERVER TO SERVE THE YOURLS DIRECTORY (NGINX/APACHE/WHATEVER)"
-echo "ONCE YOU'RE DONE AND MANAGE TO LOG IN SUCCESSFULLY INTO THE ADMIN FOR THE FIRST TIME, PLEASE RUN THIS COMMAND:"
 echo ""
-echo "sudo chmod 644 $(pwd)/user/config.php"
+echo "================================================================================================================"
+echo " YOU'LL STILL NEED TO CONFIGURE YOUR WEBSERVER TO SERVE THE YOURLS DIRECTORY (NGINX/APACHE/WHATEVER)"
+echo " ONCE YOU'RE DONE AND MANAGE TO LOG IN SUCCESSFULLY INTO THE ADMIN FOR THE FIRST TIME, PLEASE RUN THIS COMMAND:"
+echo ""
+echo " sudo chmod 644 $(pwd)/user/config.php"
+echo "================================================================================================================"
 
 cd ${START}
