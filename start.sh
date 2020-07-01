@@ -21,7 +21,7 @@ apt install -y \
             php php-fpm php-cli php-mysql php-zip \
             php-gd php-mbstring php-curl php-xml \
             php-pear php-bcmath \
-            mariadb-server mariadb-client \
+            mysql-server mysql-client \
             openssl sed jq unzip wget
 
 echo "Generating system secrets..."
