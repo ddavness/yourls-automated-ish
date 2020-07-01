@@ -12,9 +12,9 @@ START=$(pwd)
 
 # Lock these files for now
 chown root:root config-template.php
-chown root:root mariadb-init.sql
+chown root:root mysql-init.sql
 chmod 600 config-template.php
-chmod 600 mariadb-init.sql
+chmod 600 mysql-init.sql
 
 apt update
 apt install -y \
@@ -33,7 +33,7 @@ COOKIE=$(dd if=/dev/urandom bs=2048 count=2048 2> /dev/null |\
                  openssl sha3-512 -hex | openssl base64 |\
                  openssl sha3-256 | sed "s/(stdin)= //g")
 
-sed -i "s/___DATABASE_PASSWORD___/${DB_PASSWORD}/g" mariadb-init.sql
+sed -i "s/___DATABASE_PASSWORD___/${DB_PASSWORD}/g" mysql-init.sql
 sed -i "s/___DATABASE_PASSWORD___/${DB_PASSWORD}/g" config-template.php
 sed -i "s/___COOKIEKEY___/${COOKIE}/g" config-template.php
 
@@ -49,7 +49,7 @@ rm -f "${YOURLS_VERSION}.zip"
 wget "https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.zip"
 
 echo "Initializing databse..."
-mysql < mariadb-init.sql
+mysql < mysql-init.sql
 
 # WIP - User configuration here
 echo "We're now going to configure the first user."
