@@ -85,11 +85,11 @@ while [ ! -d ${INSTALL_DIR} ]; do
     echo ""
 done
 
-"Unpacking into ${INSTALL_DIR}..."
+echo "Unpacking into ${INSTALL_DIR}..."
 
 rm -f "${INSTALL_DIR}/yourls.zip"
 mv "${YOURLS_VERSION}.zip" "${INSTALL_DIR}/yourls.zip"
-cd ${YOURLS_VERSION}
+cd ${INSTALL_DIR}
 unzip yourls.zip
 rm -f yourls.zip
 mv YOURLS-${YOURLS_VERSION}/* .
